@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2 {
+  @apply font-bold;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-2xl mb-2;
+}
+
+nav {
+  @apply p-6 flex items-center justify-between;
+}
+
+main {
+  @apply p-6;
+}
+
+input[type=search] {
+  @apply border-gray-400 border;
+}
