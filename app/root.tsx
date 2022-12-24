@@ -1,4 +1,5 @@
-import type { MetaFunction, LinksFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import type { MetaFunction, LinksFunction, LoaderArgs } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,7 +7,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { isAuthorized } from "./utils/auth";
 
 import styles from "./styles/app.css";
 
@@ -23,7 +26,23 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const loader = async({request}:LoaderArgs) => {
+    if (!isAuthorized(request)) {
+      return json({authorized: false}, {status: 401});
+    }
+
+    return json({
+      authorized: true
+    });
+  }
+
 export default function App() {
+  const data = useLoaderData();
+
+  if (!data.authorized) {
+    return <h1>Unauthorized</h1>;
+  }
+
   return (
     <html lang="en">
       <head>
