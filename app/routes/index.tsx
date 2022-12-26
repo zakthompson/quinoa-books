@@ -20,25 +20,33 @@ export default function Index() {
     <>
       <Nav />
       <main>
-        <div>
-          <h2>Currently Reading</h2>
-          {data.reading.map((book: Book) => {
-            const src = book.coverImage;
-            if (src) {
-              return <img key={book.name} src={src} alt="" />;
-            }
-            return <div key={book.name}>{book.name}</div>;
-          })}
+        <div className="mb-4">
+          {!!data.reading.length && <h2>Currently Reading</h2>}
+          <div className="book-grid">
+            {data.reading.map((book: Book, index: number) => {
+              const src = book.coverImage;
+              return (
+                <div className="book" key={index}>
+                  {!!src && <img src={src} alt="" />}
+                  {!src && <div className="missing-image">{book.name}</div>}
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div>
-          <h2>Books to Buy</h2>
-          {data.toBuy.map((book: Book) => {
-            const src = book.coverImage;
-            if (src) {
-              return <img key={book.name} src={src} alt="" />;
-            }
-            return <div key={book.name}>{book.name}</div>;
-          })}
+          {!!data.toBuy.length && <h2>Books to Buy</h2>}
+          <div className="book-grid">
+            {data.toBuy.map((book: Book, index: number) => {
+              const src = book.coverImage;
+              return (
+                <div className="book" key={index}>
+                  {!!src && <img src={src} alt="" />}
+                  {!src && <div className="missing-image">{book.name}</div>}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </main>
     </>

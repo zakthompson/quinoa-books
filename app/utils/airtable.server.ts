@@ -48,7 +48,7 @@ export function getReading() {
   return new Promise((resolve, reject) => {
     table
       .select({
-        maxRecords: 4,
+        maxRecords: 8,
         view: "Grid view",
         fields: ["Name", "Cover Image"],
         filterByFormula:
@@ -73,7 +73,7 @@ export function getUnowned() {
   return new Promise((resolve, reject) => {
     table
       .select({
-        maxRecords: 4,
+        maxRecords: 8,
         view: "Grid view",
         fields: ["Name", "Cover Image"],
         filterByFormula: "{Owned} = FALSE()",

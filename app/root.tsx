@@ -24,17 +24,21 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: styles,
   },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap",
+  },
 ];
 
-export const loader = async({request}:LoaderArgs) => {
-    if (!isAuthorized(request)) {
-      return json({authorized: false}, {status: 401});
-    }
-
-    return json({
-      authorized: true
-    });
+export const loader = async ({ request }: LoaderArgs) => {
+  if (!isAuthorized(request)) {
+    return json({ authorized: false }, { status: 401 });
   }
+
+  return json({
+    authorized: true,
+  });
+};
 
 export default function App() {
   const data = useLoaderData();

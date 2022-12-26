@@ -2,27 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: "Playfair Display", serif;
+}
+
 h1,
 h2 {
-  @apply font-bold;
+  @apply font-bold mb-4;
 }
 
 h1 {
-  @apply text-4xl;
+  @apply text-5xl;
 }
 
 h2 {
-  @apply text-2xl mb-2;
+  @apply text-4xl;
 }
 
 nav {
-  @apply p-6 flex items-center justify-between;
+  @apply relative flex flex-col items-center justify-center h-[50vh] text-white;
+  background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80');
+  background-position: center;
+  background-size: cover;
+}
+
+nav .link {
+  @apply text-lg border-2 border-white rounded-lg inline-block p-2 pl-5 pr-5;
 }
 
 main {
-  @apply p-6;
+  @apply p-6 pl-12 pr-12;
 }
 
 input[type=search] {
-  @apply border-gray-400 border;
+  @apply border-gray-400 border rounded-md p-2 w-3/4 mb-10 sm:w-1/2;
+}
+
+.book-grid {
+  @apply inline-flex flex-wrap gap-4;
+}
+
+.book-grid .book {
+  width: 180px;
+}
+
+.book-grid .missing-image {
+  @apply w-[180px] h-[255px] border-gray-500 border p-2 flex items-center justify-center;
 }
