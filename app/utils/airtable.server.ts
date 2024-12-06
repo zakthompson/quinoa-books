@@ -102,15 +102,15 @@ export function addBook(book: Book) {
           fields: {
             Name: book.name,
             Author: book.author,
-            Description: book.description,
+            // Description: book.description,
             Genre: book.genre,
             Owned: false,
             "Cover Image": book.openLibraryCoverKey
               ? [
-                  {
-                    url: coverKeyToSrc(book.openLibraryCoverKey, "L"),
-                  },
-                ]
+                {
+                  url: coverKeyToSrc(book.openLibraryCoverKey, "L"),
+                },
+              ]
               : undefined,
           },
         },
