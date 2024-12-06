@@ -73,7 +73,7 @@ export function getUnowned() {
   return new Promise((resolve, reject) => {
     table
       .select({
-        maxRecords: 8,
+        // maxRecords: 8,
         view: "Grid view",
         fields: ["Name", "Cover Image"],
         filterByFormula: "{Owned} = FALSE()",
